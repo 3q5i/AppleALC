@@ -16,7 +16,7 @@ jobs:
 
       - name: Download Lilu
         run: |
-          curl -sL $(curl -s https://api.github.com/repos/acidanthera/Lilu/releases/latest | grep browser_download_url | grep RELEASE | head -1 | cut -d'"' -f4) -o Lilu.zip
+          curl -sL $(curl -s https://api.github.com/repos/acidanthera/Lilu/releases/latest | grep browser_download_url | grep DEBUG | head -1 | cut -d'"' -f4) -o Lilu.zip
           unzip Lilu.zip
 
       - name: Build
