@@ -1,0 +1,24 @@
+name: Build AppleALC
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone MacKernelSDK
+        run: git clone https://github.com/acidanthera/MacKernelSDK
+
+      - name: Build
+        run: xcodebuild -scheme AppleALC -configuration Release build
+
+      - name: Upload kext
+        uses: actions/upload-artifact@v4
+        with:
+          name: AppleALC-kext
+          path: build/Release/AppleALC.kext
