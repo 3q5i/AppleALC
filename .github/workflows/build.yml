@@ -20,10 +20,10 @@ jobs:
           unzip Lilu.zip
 
       - name: Build
-        run: xcodebuild -scheme AppleALC -configuration Release build
+        run: xcodebuild -scheme AppleALC -configuration Release -derivedDataPath build build
 
       - name: Upload kext
         uses: actions/upload-artifact@v4
         with:
           name: AppleALC-kext
-          path: build/Release/AppleALC.kext
+          path: build/Build/Products/Release/AppleALC.kext
